@@ -146,8 +146,8 @@ app.get("/", function(req, res){
              
              var mainPart = definitions.first().find(".lr_dct_sf_h");
              
-	     var origin = definitions.find(".vmod").first().next("div.xpdxpnd").text();
-	     dictionary.origin = origin;
+	      var origin = definitions.find(".vmod").first().next("div.xpdxpnd").find("div").last().text();
+	      dictionary.origin = origin;
 			
              var meaning = {};
 			 			 
