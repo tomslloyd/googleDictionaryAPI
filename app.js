@@ -142,7 +142,7 @@ app.get("/", function(req, res){
                  return res.status(404).sendFile(path.join(__dirname+'/404.html'));
              }
              
-             var definitions = $(".lr_dct_ent.vmod.XpoqFe");
+             var definitions = $(".lr_dct_ent.vmod.XpoqFe").eq(0);
              
              var mainPart = definitions.first().find(".lr_dct_sf_h");
              
@@ -167,12 +167,19 @@ app.get("/", function(req, res){
                     var synonyms = synonymsText.split(/,|;/).filter(synonym => synonym!= ' ' && synonym).map(function(item) {
                                         return item.trim();
                                    });
-                                   
+                       
+                    var antonyms = antonymsText.split(/,|;/).filter(antonyms => antonyms!= ' ' && antonyms).map(function(item) {
+                                        return item.trim();
+                                   });
+			 
                     if(example.length > 0)
                         newDefinition.example = example.substring(1, example.length - 1);               
                     
                     if(synonyms.length > 0)
                         newDefinition.synonyms = synonyms;
+		
+                    if(antonyms.length > 0)
+                        newDefinition.antonyms = antonyms;	
 						
                     if(alernaitions.length > 0){
 						if(ia == 0){
